@@ -6,6 +6,7 @@ export class SeedController {
   constructor(private readonly seedService: SeedService) {}
 
   @Get()
+  //@Auth(RolesValidos.admin)
   cargar() {
     return this.seedService.cargarDatos();
   }

@@ -10,6 +10,7 @@ import { DetallePedido } from './entities/detallePedido.entity';
 import { Envio } from './entities/envio.entity';
 import { EstadoPedido } from './entities/estadoPedido.entity';
 import { TipoCosto } from './entities/tipoCosto.entity';
+import { Persona } from './entities/persona.entity';
 
 @Module({
   controllers: [PedidosController],
@@ -23,6 +24,7 @@ import { TipoCosto } from './entities/tipoCosto.entity';
       DetallePedido,
       Envio,
       EstadoPedido,
+      Persona,
     ]),
   ],
 })

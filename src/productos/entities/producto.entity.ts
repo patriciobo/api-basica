@@ -3,10 +3,12 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ImagenProducto } from './imagenProducto.entity';
+import { Usuario } from 'src/auth/entities/usuario.entity';
 
 @Entity({ name: 'productos' })
 export class Producto {
@@ -29,6 +31,9 @@ export class Producto {
     { cascade: true, eager: true }, //eager carga relaciones en la request
   )
   imagenesProducto: ImagenProducto[];
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.producto, { eager: true })
+  usuario: Usuario;
 
   @BeforeInsert()
   crearSlug() {

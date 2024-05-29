@@ -1,3 +1,4 @@
+import * as bcrypt from 'bcrypt';
 interface ProductoSeed {
   modelo: string;
   imagenesProducto: string[];
@@ -5,9 +6,32 @@ interface ProductoSeed {
 
 interface SeedData {
   productos: ProductoSeed[];
+  usuarios: UsuarioSeed[];
+}
+
+interface UsuarioSeed {
+  email: string;
+  password: string;
+  nombreCompleto: string;
+  roles: string[];
 }
 
 export const initialData: SeedData = {
+  usuarios: [
+    {
+      email: 'test@google.com',
+      password: bcrypt.hashSync('Abc123', 10),
+      nombreCompleto: 'Usuario Test 1',
+      roles: ['user', 'admin'],
+    },
+    {
+      email: 'test2@google.com',
+      password: bcrypt.hashSync('Abc123', 10),
+      nombreCompleto: 'Usuario Test 2',
+      roles: ['user'],
+    },
+  ],
+
   productos: [
     {
       modelo: 'Sagem my101X',
@@ -88,10 +112,6 @@ export const initialData: SeedData = {
     {
       modelo: 'Prestigio MultiPhone 5500 Duo',
       imagenesProducto: ['product_image_6.jpg', 'product_image_8.jpg'],
-    },
-    {
-      modelo: 'Sagem my101X',
-      imagenesProducto: ['product_image_8.jpg'],
     },
     {
       modelo: 'Vodafone Smart 4 max',

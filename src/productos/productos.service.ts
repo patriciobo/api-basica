@@ -14,6 +14,7 @@ import { UpdateProductoDto } from './dto/update-producto.dto';
 import { Producto } from './entities/producto.entity';
 import { PaginationDto } from '../common/dto/pagination.dto';
 import { ImagenProducto } from './entities/imagenProducto.entity';
+import { Usuario } from 'src/auth/entities/usuario.entity';
 
 @Injectable()
 export class ProductosService {
@@ -29,12 +30,13 @@ export class ProductosService {
     private readonly dataSource: DataSource, //Conoce la config de la BD para ejecutar queries
   ) {}
 
-  async create(createProductoDto: CreateProductoDto) {
+  async create(createProductoDto: CreateProductoDto, usuario: Usuario) {
     try {
       const { imagenesProducto = [], ...detallesProducto } = createProductoDto;
 
       const producto = this.productoRepository.create({
         ...detallesProducto,
+        usuario,
         imagenesProducto: imagenesProducto.map((imagen) =>
           this.imagenProductoRepository.create({ url: imagen }),
         ),
@@ -80,7 +82,11 @@ export class ProductosService {
     return producto;
   }
 
-  async update(id: string, updateProductoDto: UpdateProductoDto) {
+  async update(
+    id: string,
+    updateProductoDto: UpdateProductoDto,
+    usuario: Usuario,
+  ) {
     const { imagenesProducto, ...propsParaActualizar } = updateProductoDto;
 
     const producto = await this.productoRepository.preload({
@@ -104,6 +110,7 @@ export class ProductosService {
         );
       }
 
+      producto.usuario = usuario;
       await queryRunner.manager.save(producto);
       await queryRunner.commitTransaction();
       await queryRunner.release();
