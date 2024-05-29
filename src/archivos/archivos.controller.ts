@@ -12,12 +12,16 @@ import {
   Res,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiTags } from '@nestjs/swagger';
+
 import { diskStorage } from 'multer';
 import { Response } from 'express';
+
 import { ArchivosService } from './archivos.service';
 import { nombradorArchivos } from './helpers/nombradorArchivos.helper';
 import { ConfigService } from '@nestjs/config';
 
+@ApiTags('Archivos')
 @Controller('archivos')
 export class ArchivosController {
   constructor(

@@ -16,6 +16,7 @@ Incluye:
   6. Passport asincrono con generación de JWT mediante secreto, y authGuard utilizando funcion validate() de jwtstrategy.
   7. Decorador compuesto Auth() el cual protege endpoints o controladores para que solo accedan usuarios atenticados, pudiendo especificar RolesValidos como parametro.
   8. Decorador @GetUser() el cual obtiene el usuario autenticado y lo almacena en una variable
+  9. Algo de documentacion con OpenAPI (Swagger)
 
 - Variables de entorno para BD en archivos .env y .env.template
 
