@@ -7,6 +7,7 @@ import { PedidosModule } from './pedidos/pedidos.module';
 import { SeedModule } from './seed/seed.module';
 import { ArchivosModule } from './archivos/archivos.module';
 import { AuthModule } from './auth/auth.module';
+import { MensajesWsModule } from './mensajes-ws/mensajes-ws.module';
 
 @Module({
   imports: [
@@ -34,6 +35,8 @@ import { AuthModule } from './auth/auth.module';
     ArchivosModule,
 
     AuthModule,
+
+    MensajesWsModule,
   ],
 })
 export class AppModule {}

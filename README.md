@@ -17,6 +17,7 @@ Incluye:
   7. Decorador compuesto Auth() el cual protege endpoints o controladores para que solo accedan usuarios atenticados, pudiendo especificar RolesValidos como parametro.
   8. Decorador @GetUser() el cual obtiene el usuario autenticado y lo almacena en una variable
   9. Algo de documentacion con OpenAPI (Swagger)
+  10. Websocket server que identifica al usuario a través de un JWT (Hay que agregar un front-end para que funcione)
 
 - Variables de entorno para BD en archivos .env y .env.template
 
