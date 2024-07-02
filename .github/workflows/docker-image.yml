@@ -29,4 +29,4 @@ jobs:
       run: docker build -t patriciobo/api-nest:1.2.1 .
 
     - name: Push Docker Image
-      run: docker push patriciobo/api-nest:1.2.1 .
+      run: docker push patriciobo/api-nest:1.2.1
