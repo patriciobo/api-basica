@@ -26,7 +26,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         
     - name: Build Docker image
-      run: docker build -t patriciobo/api-nest:1.2.1 .
+      run: docker build -t patriciobo/api-nest-github-actions:0.0.1 .
 
     - name: Push Docker Image
-      run: docker push patriciobo/api-nest:1.2.1
+      run: docker push patriciobo/api-nest-github-actions:0.0.1
