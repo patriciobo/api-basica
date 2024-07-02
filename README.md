@@ -9,7 +9,7 @@ Incluye:
 - Configuraciones:
 
   1. Global Pipes para validar propiedades de los DTOs inexistentes o no requeridas en las request
-  2. Docker para levantar BD Postgres
+  2. Docker para levantar BD Postgres y correr la aplicacion en su propio contenedor
   3. TypeORM en app.module utilizando variables de entorno
   4. Paginación con paginationDTO
   5. Registro y Login de Usuarios con JWT y encriptacion de contraseñas
@@ -51,9 +51,10 @@ Pre-Requisitos:
 
 4. Configurar valores de variables de entorno
 
-5. Levantar la BD
+5. Construir la imagen y levantar la aplicacion desde su contenedor (Verificar variable de entorno STAGE)
 
 ```
+docker compose build
 docker-compose up -d
 ```
 
@@ -64,8 +65,14 @@ GET
 localhost:3000/api/seed
 ```
 
-7. Ejecutar el proyecto en modo de desarrollo:
+# Para construir imagen de produccion
 
 ```
-yarn start:dev
+ docker compose -f docker-compose.prod.yaml build
+```
+
+# Construir Imagen para distintas arquitecturas
+
+```
+docker buildx build --platform linux/amd64,linux/arm64 -t patriciobo/api-nest:<tag> --push .
 ```
